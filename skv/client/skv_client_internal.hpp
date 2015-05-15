@@ -122,7 +122,7 @@ class skv_client_internal_t
     // Removes state and shuts down the server
     skv_status_t Finalize();
 
-    skv_status_t Connect(const char* aConfigFile, int aFlags);
+    skv_status_t Connect( int aFlags );
     skv_status_t Disconnect();
 
     /***

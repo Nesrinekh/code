@@ -70,8 +70,8 @@ class skv_client_conn_manager_if_t
   skv_client_ccb_manager_if_t* mCCBMgrIF;
 
   skv_status_t ConnectToServer( int                        aServerRank,
-                                 skv_server_addr_t         aServerAddr,
-                                 skv_client_server_conn_t* aServerConn );
+                                skv_server_addr_t         aServerAddr,
+                                skv_client_server_conn_t* aServerConn );
 
   skv_status_t DisconnectFromServer( skv_client_server_conn_t* aServerConn );
 
@@ -79,7 +79,7 @@ class skv_client_conn_manager_if_t
 
 
   skv_status_t ProcessCCB( skv_client_server_conn_t*    aConn,
-                            skv_client_ccb_t*            aCCB );
+                           skv_client_ccb_t*            aCCB );
 
 public:
   skv_client_conn_manager_if_t() {};
@@ -95,7 +95,7 @@ public:
   skv_status_t Finalize();
 
   // Makes a 1 by N connections to the server group
-  skv_status_t Connect( const char* aConfigFile, int aFlags );
+  skv_status_t Connect( int aFlags, const skv_configuration_t *aConfig );
 
   skv_status_t Disconnect();
 

@@ -76,7 +76,7 @@ main(int argc, char **argv)
     << "test_skv_insert_command::main():: About to connect "
     << EndLogLine;
 
-  status = Client.Connect( NULL, 0 );
+  status = Client.Connect( 0 );
 
   if( status == SKV_SUCCESS )
     {

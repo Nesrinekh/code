@@ -50,7 +50,7 @@ public:
   skv_status_t Finalize();
 
   /* optional config file name or NULL to point to the skv_server.conf file or equivalent */
-  skv_status_t Connect( const char* aConfigFile, int aFlags );
+  skv_status_t Connect( int aFlags );
   skv_status_t Disconnect();
 
   /***

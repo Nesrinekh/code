@@ -116,6 +116,7 @@ int Init_test( int argc, char **argv )
     {
       default:
         status = -EINVAL;
+        std::cout << "ERROR: Unrecognized argument: " << op << std::endl << std::endl;
       case 'h':
       {
         std::cout << "USAGE: skv_base_test\n";
@@ -213,7 +214,7 @@ skv_status_t Init_skv()
     << " ConfigFile: " << config.CONF_FILE.c_str()
     << EndLogLine;
 
-  status = gdata.Client.Connect( config.CONF_FILE.data(), 0 );
+  status = gdata.Client.Connect( 0 );
 
   if( status == SKV_SUCCESS )
     {

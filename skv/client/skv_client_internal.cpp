@@ -212,8 +212,7 @@ Disconnect()
  ***/
 skv_status_t
 skv_client_internal_t::
-Connect( const char* aConfigFile,
-         int   aFlags )
+Connect( int aFlags )
 {
   BegLogLine( SKV_CLIENT_CONNECTION_LOG )
     << "skv_client_internal_t::Connect():: Entering "
@@ -230,7 +229,7 @@ Connect( const char* aConfigFile,
    * of a file which contains the skv server
    * addresses
    *****************************************/
-  skv_status_t status = mConnMgrIF.Connect( aConfigFile, aFlags );
+  skv_status_t status = mConnMgrIF.Connect( aFlags, mSKVConfiguration );
   if( status != IT_SUCCESS )
   {
       BegLogLine( SKV_CLIENT_INIT_LOG )
@@ -244,7 +243,7 @@ Connect( const char* aConfigFile,
 
   BegLogLine( SKV_CLIENT_CONNECTION_LOG )
     << "skv_client_internal_t::Connect():: Connected to "
-    << " aServerGroupName: " << aConfigFile
+    << " aServerGroupFile: " << mSKVConfiguration->GetMachineFile()
     << EndLogLine;
   /*****************************************/
 

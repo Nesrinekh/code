@@ -216,8 +216,7 @@ extern "C"
 
   skv_status_t
   SKV_Connect( skv_hdl_t  aClient,
-                const char *aServerGroupFile,
-                int         aFlags );
+               int         aFlags );
 
   skv_status_t
   SKV_Disconnect( skv_hdl_t aClient );

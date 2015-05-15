@@ -504,7 +504,7 @@ public:
       << "skv_bench: About to connect "
       << EndLogLine;
 
-    status = mClient.Connect( NULL, 0 );
+    status = mClient.Connect( 0 );
 
     if( status == SKV_SUCCESS )
       {

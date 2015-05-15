@@ -72,11 +72,9 @@ SKV_Finalize( skv_hdl_t aClient )
 
 skv_status_t
 SKV_Connect( skv_hdl_t  aClient,
-              const char *aServerGroupFile,
               int         aFlags )
   {
-  return ((skv_client_internal_t *)aClient)->Connect( aServerGroupFile,
-                                                      aFlags );
+  return ((skv_client_internal_t *)aClient)->Connect( aFlags );
   }
 
 

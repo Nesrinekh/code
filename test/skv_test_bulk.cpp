@@ -163,7 +163,7 @@ main(int argc, char **argv)
     << "skv_test_n_inserts_retrieves::main():: About to connect "
     << EndLogLine;
 
-  status = Client.Connect( NULL, 0 );
+  status = Client.Connect( 0 );
 
   if( status == SKV_SUCCESS )
     {

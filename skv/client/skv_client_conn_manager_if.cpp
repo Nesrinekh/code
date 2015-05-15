@@ -287,12 +287,10 @@ Finalize()
  ***/
 skv_status_t
 skv_client_conn_manager_if_t::
-Connect( const char* aConfigFile,
-         int   aFlags )
+Connect( int aFlags, const skv_configuration_t *aConfig )
 {
   BegLogLine( SKV_CLIENT_CONN_INFO_LOG )
     << "skv_client_conn_manager_if_t::Connect():: Entering "
-    << " aConfigFile: " << (aConfigFile!=NULL? aConfigFile : "default")
     << " aFlags: " << aFlags
     << EndLogLine;
 
@@ -305,8 +303,6 @@ Connect( const char* aConfigFile,
     << "skv_client_conn_manager_if_t::Connect():: "
     << " MyHostname: " << MyHostname
     << EndLogLine;
-
-  skv_configuration_t *config = skv_configuration_t::GetSKVConfiguration( aConfigFile );
 
 #ifdef SKV_ROQ_LOOPBACK_WORKAROUND
   // acquire the local interface address to check if server is local or remote
@@ -329,10 +325,10 @@ Connect( const char* aConfigFile,
     BegLogLine( SKV_CLIENT_CONN_INFO_LOG )
         << "ifa_name=" << ifent->ifa_name
         << " sa_family=" << ifent->ifa_addr->sa_family
-        << " GetCommIF()=" << config->GetCommIF()
+        << " GetCommIF()=" << aConfig->GetCommIF()
         << " AF_INET=" << AF_INET
         << EndLogLine ;
-    if( strncmp( ifent->ifa_name, config->GetCommIF(), strnlen( ifent->ifa_name, 16 ) ) == 0 )
+    if( strncmp( ifent->ifa_name, aConfig->GetCommIF(), strnlen( ifent->ifa_name, 16 ) ) == 0 )
     {
       if( ifent->ifa_addr->sa_family == AF_INET )
       {
@@ -360,13 +356,13 @@ Connect( const char* aConfigFile,
   // first pass of the server machine file to get the server count
   BegLogLine( SKV_CLIENT_CONN_INFO_LOG )
     << "skv_client_conn_manager_if_t::Connect():: "
-    << " ComputeFileNamePath: " << config->GetMachineFile()
+    << " ComputeFileNamePath: " << aConfig->GetMachineFile()
     << EndLogLine;
 
-  ifstream fin( config->GetMachineFile() );
+  ifstream fin( aConfig->GetMachineFile() );
 
   StrongAssertLogLine( !fin.fail() )
-    << "skv_client_conn_manager_if_t::Connect():: ERROR opening server machine file: " << config->GetMachineFile()
+    << "skv_client_conn_manager_if_t::Connect():: ERROR opening server machine file: " << aConfig->GetMachineFile()
     << EndLogLine;
 
 
@@ -401,7 +397,7 @@ Connect( const char* aConfigFile,
 
 
   // Open and parse compute file name
-  ifstream fin1( config->GetMachineFile() );
+  ifstream fin1( aConfig->GetMachineFile() );
 
   // get hostname to replace local server names with localhost
   char this_host_name[ SKV_MAX_SERVER_ADDR_NAME_LENGTH ];

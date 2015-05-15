@@ -83,10 +83,9 @@ Disconnect()
  ***/
 skv_status_t
 skv_client_t::
-Connect( const char* aConfigFile,
-         int         aFlags )
+Connect( int aFlags )
 {
-  return mSKVClientInternalPtr->Connect( aConfigFile, aFlags );
+  return mSKVClientInternalPtr->Connect( aFlags );
 }
 
 /***
