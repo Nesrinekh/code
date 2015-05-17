@@ -19,6 +19,7 @@
 #endif
 
 #include <skv/common/skv_config.hpp>
+#include <skv/common/skv_client_configuration.hpp>
 #include <skv/common/skv_client_server_headers.hpp>
 #include <skv/client/skv_client_server_conn.hpp>
 #include <skv/common/skv_client_server_protocol.hpp>
@@ -35,7 +36,7 @@
 
 class skv_client_internal_t
   {
-    skv_configuration_t *mSKVConfiguration;
+    skv_client_configuration_t *mSKVConfiguration;
 
     int mMyRank;
     int mClientGroupCount;

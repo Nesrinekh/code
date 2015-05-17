@@ -44,6 +44,8 @@ typedef enum {
 
 class skv_configuration_t
 {
+
+
   static skv_configuration_t *mConfiguration;
 
   uint32_t  mServerPort;   // stored in host byte order
@@ -54,7 +56,9 @@ class skv_configuration_t
   string    mCommIF;
 
   string    mConfigFile;
-
+  
+  
+protected :
   skv_configuration_t();
   int GetConfigurationFile( const char *aConfigFile = NULL );
   skv_config_setting_t GetVariableCase( const string s, size_t *valueIndex );

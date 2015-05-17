@@ -14,6 +14,7 @@
 #include <skv/client/skv_client_internal.hpp>
 #include <skv/common/skv_utils.hpp>
 
+
 #include <netdb.h>	/* struct hostent */
 
 #ifndef SKV_CLIENT_CONNECTION_LOG
@@ -103,7 +104,8 @@ Init( skv_client_group_id_t aCommGroupId,
     << " mClientGroupCount: " << mClientGroupCount
     << EndLogLine;
 
-  mSKVConfiguration = skv_configuration_t::GetSKVConfiguration( aConfigFile );
+  skv_client_configuration_t* mSKVConfig = new skv_client_configuration_t;
+  mSKVConfiguration = mSKVConfig->GetSKVConfiguration( aConfigFile );
 
   /************************************************************
    * Initialize the interface adapter
